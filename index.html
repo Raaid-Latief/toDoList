@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="styles.css">
+   <script src="https://kit.fontawesome.com/38d98b9057.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+    <section id="heading">
+        <div class="py-3 text-center"><h1>MY toDoList</h1></div>
+    <div id="" class="row p-5 text-center">
+        <div class="col-lg-4 p-3">
+            <span onclick="newElement()" class="addBtn">Sort By</span>
+            <input type="text" id="yourInput" placeholder="What you wanna do?">
+            <span onclick="newElement()" class="addBtn">Add</span>
+
+        </div>
+
+    </div>
+</section> 
+
+<div class="px-5">
+    <ul id="yourUL" class="">
+        <li>Go jim</li>
+        <li>Get Money</li>
+
+    </ul>
+</div>
+
+
+<script>
+
+// Create a new list item when clicking on the "Add" button
+    function newElement() {
+      let li = document.createElement("li");
+      let inputValue = document.getElementById("yourInput").value;
+      
+     {
+    document.getElementById("yourUL").appendChild(li);
+  }
+  document.getElementById("yourInput").value = "";
+
+      
+      </script>
+
+       -->
+
+       <div class="box">
+        <div id="box" class="bg-white rounded shadow m-5">
+          <div class="mb-4">
+            <h1 class="p-2 text-danger text-center">
+              To-Do List
+            </h1>
+            <div class="p-2 text-center">
+              <form action="">
+              <input type="form-control" id="add" type="text" placeholder="Add Todo" required/>
+              <input type="hidden" id="saveIndex" required/>
+              <button class="p-1 btn btn-outline-danger" id="add-task-btn">Add</button>
+            </form>
+            </div>
+          </div>
+          <div id="listBox"></div>
+        </div>
+      </div>
+
+
+    
+    
+<script>
+
+const text = document.getElementById("add");
+const addTaskButton = document.getElementById("add-task-btn");
+const saveTaskButton = document.getElementById("save-todo-btn");
+const listBox = document.getElementById("listBox");
+const saveInd = document.getElementById("saveIndex");
+
+
+
+
+// array to add items
+
+let todoArray = [];
+
+// add items to do list
+
+addTaskButton.addEventListener("click", (e) => {
+ e.preventDefault();
+ let todo = localStorage.getItem("todo");
+ if (todo === null) {
+   todoArray = [];
+ } else {
+   todoArray = JSON.parse(todo);
+ }
+ todoArray.push(text.value);
+ text.value = "";
+ localStorage.setItem("todo", JSON.stringify(todoArray));
+ displayTodo();
+});
+
+
+
+
+//Display items on screen
+
+function displayTodo() {
+ let todo = localStorage.getItem("todo");
+ if (todo === null) {
+   todoArray = [];
+ } else {
+   todoArray = JSON.parse(todo);
+ }
+ let htmlCode = "";
+ todoArray.forEach((list, ind) => {
+   htmlCode += `<div class='row'>
+ 
+   <p id="displayedItems" class='text-success'>${list}</p>
+  <button onclick='deleteTodo(${ind})'  <i id="close-btn" class="fa-solid fa-circle-xmark"></i></button>
+
+</div>`;
+ });
+ listBox.innerHTML = htmlCode;
+}
+
+// Delete
+function deleteTodo(ind) {
+ let todo = localStorage.getItem("todo");
+ todoArray = JSON.parse(todo);
+ todoArray.splice(ind, 1);
+ localStorage.setItem("todo", JSON.stringify(todoArray));
+ displayTodo();
+}
+
+
+ </script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
