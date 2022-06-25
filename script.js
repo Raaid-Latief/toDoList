@@ -4,9 +4,6 @@ const saveTaskButton = document.getElementById("save-todo-btn");
 const listBox = document.getElementById("listBox");
 const saveInd = document.getElementById("saveIndex");
 
-
-
-
 // array to add items
 
 let todoArray = [];
@@ -28,8 +25,6 @@ addTaskButton.addEventListener("click", (e) => {
 });
 
 
-
-
 //Display items on screen
 
 function displayTodo() {
@@ -41,11 +36,11 @@ function displayTodo() {
  }
  let htmlCode = "";
  todoArray.forEach((list, ind) => {
-   htmlCode += `<div class='row p-2'>
+   htmlCode += `<div class='d-flex flex-row p-2'>
  
    
    <p id="displayedItems" class='text-success'> - ${list}</p>
-  <button onclick='deleteTodo(${ind})'  <i id="close-btn" class="fa-solid fa-circle-xmark"></i></button>
+  <button onclick='deleteTodo(${ind})'  <i id="close-btn" class="btn btn-outline-danger fa-solid fa-circle-xmark"></i></button>
 
 </div>`;
  });
@@ -60,3 +55,32 @@ function deleteTodo(ind) {
  localStorage.setItem("todo", JSON.stringify(todoArray));
  displayTodo();
 }
+
+
+
+// Jasons Saturday to do list
+
+const todos = [
+  {
+    id: 1,
+    title: "Do the Washing"
+  },
+  {
+    id: 1,
+    title: "Do the Washing"
+  },
+  {
+    id: 1,
+    title: "Do the Washing"
+  },
+  {
+    id: 1,
+    title: "Do the Washing"
+  },
+]
+
+
+// write html too screen
+
+
+const todosContainer = document.querySelector()
